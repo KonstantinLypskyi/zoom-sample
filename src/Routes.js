@@ -7,8 +7,8 @@ import Join from './Join';
 const Routes = () => (
     <Router>
         <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/join" component={Join} />
+            <Route exact path="/zoom-sample" component={Home} />
+            <Route exact path="/zoom-sample/join" component={Join} />
         </Switch>
     </Router>
 );
