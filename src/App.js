@@ -5,7 +5,15 @@ import React, { useState, useEffect } from 'react';
 const API_KEY = 'GG-QnD4ARsSheZwfl4ng0A';
 const API_SECRET = 'Q3ybAFytf4F1YkPbgxFiX289c5w1IYu26ijV';
 
+const startMeetingLink = 'https://zoom.us/oauth/authorize?response_type=code&client_id=9zmYaRNcRoWQk8DIjzhyxw&redirect_uri=https://zoom-php-app.herokuapp.com/callback.php';
+
+const PAGE_TYPES = {
+    CHOICE_MEETING: 'CHOICE_MEETING',
+    JOIN_MEETING: 'JOIN_MEETING',
+}
+
 const App = () => {
+  const [page, setPage] = useState(PAGE_TYPES.CHOICE_MEETING);
   const [displayName, setDisplayName] = useState('');
   const [meetingNumber, setMeetingNumber] = useState('');
   const [meetingPassword, setMeetingPassword] = useState('');
@@ -64,6 +72,21 @@ const App = () => {
     ZoomMtg.prepareJssdk();
   }, []);
 
+  if (page === PAGE_TYPES.CHOICE_MEETING) {
+    return (
+        <div>
+        <nav id="nav-tool" className="navbar navbar-inverse navbar-fixed-top">
+        <div className="container">
+            <div className="navbar-header">
+                <a href={startMeetingLink} className="navbar-brand">Start a meeting</a>
+                <button onClick={() => setPage(PAGE_TYPES.JOIN_MEETING)} className="navbar-brand">Join the meeting</button>
+            </div>
+        </div>
+        </nav>
+    </div>
+    )
+  }
+
   return (
   <div>
         <nav id="nav-tool" className="navbar navbar-inverse navbar-fixed-top">
@@ -93,11 +116,6 @@ const App = () => {
             </div>
         </div>
     </nav>
-
-    
-    {/* <div id="show-test-tool">
-        <button type="submit" className="btn btn-primary" id="show-test-tool-btn" title="show or hide top test tool">Show</button>
-    </div> */}
   </div>
 )}
 
