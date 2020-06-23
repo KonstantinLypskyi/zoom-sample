@@ -8,7 +8,7 @@ const Home = () => (
     <div className="container">
         <div className="navbar-header">
             <a href={startMeetingLink} className="navbar-brand">Start a meeting</a>
-            <a href="/join" className="navbar-brand">Join the meeting</a>
+            <a href="/zoom-sample/join" className="navbar-brand">Join the meeting</a>
         </div>
     </div>
 </nav>
